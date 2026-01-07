@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Multimedia Player</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #f4f4f9;
+            line-height: 1.6;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        video {
+            width: 100%;
+            border-radius: 4px;
+            background: #000;
+        }
+        .time-display {
+            font-weight: bold;
+            color: #555;
+            margin-top: 10px;
+            display: block;
+        }
+        h2 { color: #2c3e50; border-left: 5px solid #2575fc; padding-left: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Video Player</h2>
+        <video id="myVideo" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <span class="time-display">Current Time: <span id="videoTime">0:00</span></span>
+    </div>
+
+    <div class="container">
+        <h2>Audio Player</h2>
+        <audio id="myAudio" controls>
+            <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+            Your browser does not support the audio tag.
+        </audio>
+        <div class="time-display">Current Time: <span id="audioTime">0:00</span></div>
+    </div>
+
+    <script>
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        const video = document.getElementById('myVideo');
+        const videoDisplay = document.getElementById('videoTime');
+
+        video.addEventListener('timeupdate', () => {
+            videoDisplay.innerText = formatTime(video.currentTime);
+        });
+
+        const audio = document.getElementById('myAudio');
+        const audioDisplay = document.getElementById('audioTime');
+
+        audio.addEventListener('timeupdate', () => {
+            audioDisplay.innerText = formatTime(audio.currentTime);
+        });
+    </script>
+
+</body>
+</html>

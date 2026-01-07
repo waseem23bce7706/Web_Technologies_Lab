@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration & Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>User Registration & Management System</h1>
+
+    <form id="registrationForm">
+        <h2>Register New User</h2>
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <span class="error" id="nameError"></span>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <span class="error" id="emailError"></span>
+        
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" required>
+        <span class="error" id="mobileError"></span>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <span class="error" id="passwordError"></span>
+        
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Registered Users</h2>
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <button class="clear-btn" id="clearAll">Clear All Users</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatted HTML5 Canvas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+        canvas {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+        h2 { color: #333; }
+    </style>
+</head>
+<body>
+
+    <h2></h2>
+    <canvas id="styledCanvas" width="500" height="300"></canvas>
+
+    <script>
+        const canvas = document.getElementById('styledCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // 1. Filled Rectangle with Gradient
+        const rectGrad = ctx.createLinearGradient(50, 50, 200, 150);
+        rectGrad.addColorStop(0, "#6a11cb");
+        rectGrad.addColorStop(1, "#2575fc");
+        
+        ctx.fillStyle = rectGrad;
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
+        ctx.shadowBlur = 10;
+        ctx.fillRect(50, 40, 150, 100);
+
+        // 2. Filled Circle (Reset shadow for clean look)
+        ctx.shadowBlur = 0; 
+        ctx.beginPath();
+        ctx.arc(380, 90, 50, 0, Math.PI * 2);
+        ctx.fillStyle = "#ff4e50";
+        ctx.fill();
+
+        // 3. Straight Line (Custom dash and cap)
+        ctx.beginPath();
+        ctx.moveTo(50, 200);
+        ctx.lineTo(450, 200);
+        ctx.strokeStyle = "#333";
+        ctx.lineWidth = 5;
+        ctx.lineCap = "round"; // Makes the ends of the line rounded
+        ctx.stroke();
+
+        // 4. Formatted Text
+        ctx.font = "bold 36px 'Trebuchet MS'";
+        ctx.textAlign = "center";
+        ctx.fillStyle = "#2c3e50";
+        // Adding a slight text shadow manually
+        ctx.fillText("HTML5 Canvas", canvas.width / 2, 270);
+    </script>
+
+</body>
+</html>

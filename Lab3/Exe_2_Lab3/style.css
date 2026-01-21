@@ -1,0 +1,15 @@
+body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 20px; }
+.shop-container { background: white; width: 450px; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+.product-item { display: flex; justify-content: space-between; margin-bottom: 10px; padding: 10px; border: 1px solid #eee; border-radius: 5px; }
+
+.cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed #ccc; }
+.cart-item input { width: 40px; margin: 0 10px; }
+
+.summary { margin-top: 20px; border-top: 2px solid #333; padding-top: 10px; }
+.total { font-weight: bold; font-size: 1.2rem; color: #2ecc71; }
+
+.coupon-section { margin: 15px 0; display: flex; gap: 5px; }
+button { cursor: pointer; background: #4a90e2; color: white; border: none; padding: 8px 12px; border-radius: 4px; }
+button:hover { background: #357abd; }
+.remove-btn { background: #ff4d4d; }

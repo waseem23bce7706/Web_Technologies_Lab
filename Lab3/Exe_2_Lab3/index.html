@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="shop-container">
+    <h2>Smart Shop</h2>
+    
+    <div class="product-list">
+        <div class="product-item">
+            <span>Laptop ($1000) [Electronics]</span>
+            <button onclick="addToCart('Laptop', 1000, 'Electronics')">Add to Cart</button>
+        </div>
+        <div class="product-item">
+            <span>T-Shirt ($20) [Clothing]</span>
+            <button onclick="addToCart('T-Shirt', 20, 'Clothing')">Add to Cart</button>
+        </div>
+        <div class="product-item">
+            <span>Apple ($2) [Groceries]</span>
+            <button onclick="addToCart('Apple', 2, 'Groceries')">Add to Cart</button>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="cart-section">
+        <h3>Your Cart</h3>
+        <div id="cartItems"></div>
+        
+        <div class="coupon-section">
+            <input type="text" id="couponInput" placeholder="Enter Coupon (e.g. SAVE10)">
+            <button onclick="applyCoupon()">Apply</button>
+        </div>
+
+        <div class="summary">
+            <p>Subtotal: $<span id="subtotal">0.00</span></p>
+            <p>Discount: -$<span id="discount">0.00</span></p>
+            <p class="total">Total: $<span id="total">0.00</span></p>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

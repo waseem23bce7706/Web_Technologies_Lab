@@ -1,1 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Survey Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div class="builder-card">
+    <h2>User Feedback Survey</h2>
+    <p class="subtitle">Please fill out the dynamically generated fields below.</p>
+    
+    <form id="dynamicForm">
+        <div id="survey-container"></div>
+        
+        <button type="submit" id="submitBtn">Submit Survey</button>
+    </form>
+    <div id="successMsg" class="hidden">✅ Survey submitted successfully!</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+body { font-family: 'Segoe UI', sans-serif; background: #eef2f3; display: flex; justify-content: center; padding: 40px; }
+.builder-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: 100%; max-width: 500px; }
+
+h2 { margin-top: 0; color: #2c3e50; }
+.subtitle { color: #7f8c8d; font-size: 0.9rem; margin-bottom: 25px; }
+
+.question-block { margin-bottom: 20px; padding: 15px; border-left: 4px solid #3498db; background: #f9f9f9; }
+.question-label { font-weight: bold; display: block; margin-bottom: 10px; color: #34495e; }
+
+input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+.option-item { margin-bottom: 5px; display: block; cursor: pointer; }
+
+.error-msg { color: #e74c3c; font-size: 0.8rem; margin-top: 5px; display: none; }
+.invalid input { border-color: #e74c3c; }
+.invalid .error-msg { display: block; }
+
+button { width: 100%; padding: 12px; background: #3498db; color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; transition: 0.3s; }
+button:hover { background: #2980b9; }
+
+.hidden { display: none; text-align: center; color: #27ae60; font-weight: bold; margin-top: 20px; }

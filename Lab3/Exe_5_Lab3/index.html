@@ -1,1 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multi-Stage Workflow Engine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div class="workflow-card">
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+        <div class="steps-labels">
+            <span>Account</span><span>Personal</span><span>Bio</span><span>Review</span>
+        </div>
+    </div>
+
+    <form id="workflowForm">
+        <div class="form-stage active" id="stage1">
+            <h3>Account Setup</h3>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="password" id="pass" placeholder="Password" required>
+        </div>
+
+        <div class="form-stage" id="stage2">
+            <h3>Personal Details</h3>
+            <input type="text" id="fname" placeholder="First Name" required>
+            <input type="text" id="lname" placeholder="Last Name" required>
+        </div>
+
+        <div class="form-stage" id="stage3">
+            <h3>Professional Bio</h3>
+            <textarea id="bio" placeholder="Tell us about yourself..." rows="4"></textarea>
+        </div>
+
+        <div class="form-stage" id="stage4">
+            <h3>Review & Submit</h3>
+            <div id="reviewData" class="review-box"></div>
+            <label><input type="checkbox" id="terms"> I agree to terms</label>
+        </div>
+
+        <div class="nav-btns">
+            <button type="button" id="prevBtn" class="hidden">Previous</button>
+            <button type="button" id="nextBtn">Next</button>
+            <button type="submit" id="submitBtn" class="hidden">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

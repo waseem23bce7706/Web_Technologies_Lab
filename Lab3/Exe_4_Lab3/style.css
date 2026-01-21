@@ -1,0 +1,18 @@
+body { font-family: 'Inter', sans-serif; background: #1a1a2e; color: #fff; padding: 20px; }
+.monitor-container { display: flex; gap: 20px; max-width: 1000px; margin: 0 auto; }
+
+.test-area, .log-section { background: #16213e; padding: 20px; border-radius: 10px; flex: 1; }
+
+input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; }
+.box { background: #0f3460; padding: 20px; margin-top: 10px; text-align: center; cursor: pointer; }
+
+#activityDisplay { height: 300px; overflow-y: auto; background: #0f3460; padding: 10px; font-family: monospace; font-size: 0.85rem; border-radius: 5px; }
+.log-entry { border-bottom: 1px solid #16213e; padding: 5px 0; color: #4db8ff; }
+
+.warning { background: #e94560; color: white; padding: 10px; margin-top: 10px; border-radius: 5px; text-align: center; font-weight: bold; }
+.hidden { display: none; }
+
+button { padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; margin-right: 5px; }
+#testBtn { background: #4db8ff; color: #1a1a2e; font-weight: bold; }
+.export-btn { background: #00d1b2; }
+.reset-btn { background: #ff4757; }

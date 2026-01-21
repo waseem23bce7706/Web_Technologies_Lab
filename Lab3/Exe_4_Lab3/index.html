@@ -1,1 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Activity Monitor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="root">
 
+<div class="monitor-container">
+    <div class="test-area">
+        <h2>Interactive Sandbox</h2>
+        <p>Perform actions here (Click, Type, Focus) to see them logged.</p>
+        <input type="text" id="userInput" placeholder="Type something...">
+        <button id="testBtn">Click Me</button>
+        <div class="box" id="innerBox">Inner Box (Bubbling Test)</div>
+    </div>
+
+    <div class="log-section">
+        <div class="header">
+            <h3>Activity Log</h3>
+            <div>
+                <button onclick="exportLog()" class="export-btn">Export</button>
+                <button onclick="resetLog()" class="reset-btn">Reset</button>
+            </div>
+        </div>
+        <div id="activityDisplay"></div>
+        <div id="warningBox" class="warning hidden">⚠️ Warning: Suspicious Activity Detected!</div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

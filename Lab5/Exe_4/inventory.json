@@ -1,0 +1,23 @@
+[
+    {
+        "id": "P001",
+        "name": "Wireless Mouse",
+        "category": "Electronics",
+        "price": 25.99,
+        "stock": 45
+    },
+    {
+        "id": "P002",
+        "name": "Mechanical Keyboard",
+        "category": "Electronics",
+        "price": 89.50,
+        "stock": 3
+    },
+    {
+        "id": "P003",
+        "name": "Desk Lamp",
+        "category": "Office Supplies",
+        "price": 15.00,
+        "stock": 12
+    }
+]

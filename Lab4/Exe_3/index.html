@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 700px;
+            margin: 30px auto;
+        }
+
+        input {
+            padding: 6px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 6px 10px;
+            margin: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Student Management System</h2>
+
+    <form id="studentForm">
+        <input type="text" id="id" placeholder="Student ID" required>
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="text" id="dept" placeholder="Department" required>
+        <input type="number" id="marks" placeholder="Marks" required>
+        <button type="submit">Add / Update</button>
+    </form>
+
+    <p id="message"></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th><th>Name</th><th>Department</th><th>Marks</th><th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="studentTable"></tbody>
+    </table>
+</div>
+
+<script>
+    let students = [];
+    const tableBody = document.getElementById("studentTable");
+    const message = document.getElementById("message");
+
+    fetch("students.json")
+        .then(response => {
+            if (response.status !== 200) throw new Error("404 Not Found");
+            return response.json();
+        })
+        .then(data => {
+            students = data.students;
+            renderTable();
+        })
+        .catch(() => {
+            message.textContent = "Failed to load data (500 Server Error)";
+            message.className = "error";
+        });
+
+    document.getElementById("studentForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const id = document.getElementById("id").value;
+        const name = document.getElementById("name").value;
+        const dept = document.getElementById("dept").value;
+        const marks = document.getElementById("marks").value;
+
+        const index = students.findIndex(s => s.id === id);
+
+        if (index === -1) {
+            students.push({ id, name, department: dept, marks });
+            message.textContent = "Student added successfully (200 OK)";
+            message.className = "success";
+        } else {
+            students[index] = { id, name, department: dept, marks };
+            message.textContent = "Student updated successfully (200 OK)";
+            message.className = "success";
+        }
+
+        renderTable();
+        this.reset();
+    });
+
+    function deleteStudent(id) {
+        const index = students.findIndex(s => s.id === id);
+
+        if (index === -1) {
+            message.textContent = "Student not found (404)";
+            message.className = "error";
+            return;
+        }
+
+        students.splice(index, 1);
+        message.textContent = "Student deleted successfully (200 OK)";
+        message.className = "success";
+
+        renderTable();
+    }
+
+    function editStudent(id) {
+        const student = students.find(s => s.id === id);
+
+        if (!student) {
+            message.textContent = "Student not found (404)";
+            message.className = "error";
+            return;
+        }
+
+        document.getElementById("id").value = student.id;
+        document.getElementById("name").value = student.name;
+        document.getElementById("dept").value = student.department;
+        document.getElementById("marks").value = student.marks;
+    }
+
+    function renderTable() {
+        tableBody.innerHTML = "";
+
+        students.forEach(s => {
+            const row = `
+                <tr>
+                    <td>${s.id}</td>
+                    <td>${s.name}</td>
+                    <td>${s.department}</td>
+                    <td>${s.marks}</td>
+                    <td>
+                        <button onclick="editStudent('${s.id}')">Edit</button>
+                        <button onclick="deleteStudent('${s.id}')">Delete</button>
+                    </td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+    }
+</script>
+
+</body>
+</html>

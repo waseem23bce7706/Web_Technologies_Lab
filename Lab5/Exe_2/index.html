@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Book Tracker</title>
+    <style>
+        body { font-family: system-ui, sans-serif; margin: 20px; max-width: 850px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #e9ecef; }
+        .form-section { background: #f8f9fa; padding: 15px; border: 1px solid #dee2e6; margin-bottom: 20px; }
+        .form-group { margin-bottom: 10px; }
+        input, select { padding: 6px; margin-right: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 6px 12px; cursor: pointer; border: 1px solid #007bff; background: #007bff; color: white; border-radius: 4px; }
+        button:hover { background: #0056b3; }
+        button.delete-btn { background: #dc3545; border-color: #dc3545; }
+        button.delete-btn:hover { background: #c82333; }
+        button.toggle-btn { background: #28a745; border-color: #28a745; }
+        button.toggle-btn:hover { background: #218838; }
+        #messageBox { margin-top: 15px; padding: 10px; display: none; border-radius: 4px; font-weight: bold; }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        .status-badge { padding: 4px 8px; border-radius: 12px; font-size: 0.85em; }
+        .available { background: #d4edda; color: #155724; }
+        .checked-out { background: #fff3cd; color: #856404; }
+    </style>
+</head>
+<body>
+
+    <h2>Library Book Tracker</h2>
+    
+    <div id="messageBox"></div>
+
+    <div class="form-section">
+        <h3>Add New Book</h3>
+        <div class="form-group">
+            <input type="text" id="bookId" placeholder="Book ID (e.g., B003)">
+            <input type="text" id="bookTitle" placeholder="Book Title">
+            <input type="text" id="bookAuthor" placeholder="Author">
+            <select id="bookStatus">
+                <option value="Available">Available</option>
+                <option value="Checked Out">Checked Out</option>
+            </select>
+        </div>
+        <button onclick="addBook()">Add Book</button>
+    </div>
+
+    <table id="booksTable">
+        <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>

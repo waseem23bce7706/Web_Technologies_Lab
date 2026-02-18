@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; max-width: 800px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .form-group { margin-bottom: 10px; }
+        input { padding: 5px; margin-right: 10px; }
+        button { padding: 6px 12px; cursor: pointer; }
+        #messageBox { margin-top: 15px; padding: 10px; display: none; border-radius: 4px;}
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+
+    <h2>Employee Management System</h2>
+    
+    <div id="messageBox"></div>
+
+    <div style="margin-top: 20px; padding: 15px; border: 1px solid #eee;">
+        <h3>Add / Update Employee</h3>
+        <div class="form-group">
+            <input type="text" id="empId" placeholder="Employee ID" required>
+            <input type="text" id="empName" placeholder="Name" required>
+            <input type="text" id="empDept" placeholder="Department" required>
+            <input type="number" id="empSalary" placeholder="Salary" required>
+        </div>
+        <button onclick="addOrUpdateEmployee()">Save Employee</button>
+        <button onclick="clearForm()">Clear Form</button>
+    </div>
+
+    <table id="employeeTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Salary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>

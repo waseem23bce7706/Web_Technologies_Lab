@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Username Availability Checker</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            width: 300px;
+            margin: 50px auto;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        .message {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .loading {
+            color: blue;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<form id="registerForm">
+    <h2>Register</h2>
+
+    <label>Username:</label>
+    <input type="text" id="username" required>
+
+    <div id="status" class="message"></div>
+
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    const usernameInput = document.getElementById("username");
+    const statusDiv = document.getElementById("status");
+    const form = document.getElementById("registerForm");
+
+    let isAvailable = false;
+
+    usernameInput.addEventListener("keyup", () => {
+        const username = usernameInput.value.trim();
+
+        if (username.length === 0) {
+            statusDiv.innerHTML = "";
+            return;
+        }
+
+        statusDiv.textContent = "Checking...";
+        statusDiv.className = "message loading";
+
+        fetch("users.json")
+            .then(response => response.json())
+            .then(data => {
+                if (data.users.includes(username)) {
+                    statusDiv.textContent = "Username already taken";
+                    statusDiv.className = "message error";
+                    isAvailable = false;
+                } else {
+                    statusDiv.textContent = "Username available";
+                    statusDiv.className = "message success";
+                    isAvailable = true;
+                }
+            })
+            .catch(() => {
+                statusDiv.textContent = "Error checking username";
+                statusDiv.className = "message error";
+                isAvailable = false;
+            });
+    });
+
+    form.addEventListener("submit", (e) => {
+        if (!isAvailable) {
+            e.preventDefault();
+            alert("Please choose an available username.");
+        }
+    });
+</script>
+
+</body>
+</html>

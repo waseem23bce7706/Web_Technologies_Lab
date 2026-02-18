@@ -1,0 +1,29 @@
+{
+  "products": [
+    {
+      "name": "Laptop",
+      "price": 55000,
+      "category": "Electronics"
+    },
+    {
+      "name": "Smartphone",
+      "price": 25000,
+      "category": "Electronics"
+    },
+    {
+      "name": "Chair",
+      "price": 3000,
+      "category": "Furniture"
+    },
+    {
+      "name": "Table",
+      "price": 6000,
+      "category": "Furniture"
+    },
+    {
+      "name": "Notebook",
+      "price": 80,
+      "category": "Stationery"
+    }
+  ]
+}

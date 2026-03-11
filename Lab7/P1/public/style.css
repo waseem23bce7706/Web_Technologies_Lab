@@ -1,0 +1,91 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right,#667eea,#764ba2);
+    margin:0;
+    padding:0;
+}
+
+h1{
+    text-align:center;
+    color:white;
+    margin-top:30px;
+}
+
+h2{
+    text-align:center;
+    color:#333;
+}
+
+.form{
+    background:white;
+    width:350px;
+    margin:30px auto;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+input, textarea{
+    width:100%;
+    padding:10px;
+    margin-top:12px;
+    border-radius:5px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+
+textarea{
+    resize:none;
+    height:80px;
+}
+
+button{
+    margin-top:15px;
+    padding:10px;
+    border:none;
+    border-radius:5px;
+    background:#667eea;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#5563c1;
+}
+
+#notes{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.note{
+    background:white;
+    width:260px;
+    margin:15px;
+    padding:18px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.note h3{
+    margin-top:0;
+}
+
+.note button{
+    margin-right:5px;
+    background:#ff6b6b;
+}
+
+.note button:hover{
+    background:#e05656;
+}
+
+.note button:last-child{
+    background:#2ecc71;
+}
+
+.note button:last-child:hover{
+    background:#27ae60;
+}

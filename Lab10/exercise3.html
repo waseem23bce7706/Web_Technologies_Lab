@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 3 - API Fetch</title>
+    <script src="react.production.min.js"></script>
+    <script src="react-dom.production.min.js"></script>
+    <script src="babel.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f4f8; padding: 20px; }
+        .container { max-width: 800px; margin: 40px auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .card {
+            background: #f8fafc;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 10px;
+            border-left: 5px solid #1e40af;
+        }
+        .loading { text-align: center; font-size: 1.2rem; color: #666; }
+        .error { color: red; text-align: center; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function ApiDataFetcher() {
+            const [data, setData] = React.useState([]);
+            const [loading, setLoading] = React.useState(true);
+            const [error, setError] = React.useState(null);
+
+            React.useEffect(() => {
+                // Fetch from public fake API (JSONPlaceholder)
+                fetch('https://jsonplaceholder.typicode.com/users')
+                    .then(response => {
+                        if (!response.ok) throw new Error("Failed to fetch data");
+                        return response.json();
+                    })
+                    .then(users => {
+                        setData(users);
+                        setLoading(false);
+                    })
+                    .catch(err => {
+                        setError(err.message);
+                        setLoading(false);
+                    });
+            }, []);   // Empty dependency array → runs only once on mount
+
+            if (loading) return <div className="container"><div className="loading">Loading data from API...</div></div>;
+            if (error) return <div className="container"><div className="error">Error: {error}</div></div>;
+
+            return (
+                <div className="container">
+                    <h1 style={{textAlign: "center", color: "#1e40af"}}>Users from API</h1>
+                    <p style={{textAlign: "center"}}>Fetched using useEffect + fetch</p>
+                    
+                    {data.map(user => (
+                        <div key={user.id} className="card">
+                            <h3>{user.name}</h3>
+                            <p><strong>Email:</strong> {user.email}</p>
+                            <p><strong>Company:</strong> {user.company.name}</p>
+                            <p><strong>City:</strong> {user.address.city}</p>
+                        </div>
+                    ))}
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<ApiDataFetcher />);
+    </script>
+</body>
+</html>

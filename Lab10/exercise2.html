@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 2 - Dynamic List</title>
+    <script src="react.production.min.js"></script>
+    <script src="react-dom.production.min.js"></script>
+    <script src="babel.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f4f8; padding: 20px; }
+        .container { max-width: 600px; margin: 40px auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        input { padding: 12px; width: 70%; margin-right: 10px; border-radius: 8px; border: 1px solid #ccc; }
+        button { padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; }
+        .add-btn { background: #22c55e; color: white; }
+        .list { margin-top: 20px; }
+        .item {
+            background: #f8fafc;
+            padding: 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .delete-btn { background: #ef4444; color: white; padding: 6px 12px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function DynamicList() {
+            const [items, setItems] = React.useState(["Learn React", "Practice JSX", "Build Projects"]);
+            const [inputValue, setInputValue] = React.useState("");
+
+            const addItem = () => {
+                if (inputValue.trim() !== "") {
+                    setItems([...items, inputValue.trim()]);
+                    setInputValue("");
+                }
+            };
+
+            const removeItem = (index) => {
+                const newItems = items.filter((_, i) => i !== index);
+                setItems(newItems);
+            };
+
+            return (
+                <div className="container">
+                    <h1 style={{textAlign: "center", color: "#1e40af"}}>Dynamic List (Add & Remove)</h1>
+                    
+                    <div>
+                        <input 
+                            type="text" 
+                            value={inputValue} 
+                            onChange={(e) => setInputValue(e.target.value)}
+                            placeholder="Enter new item"
+                        />
+                        <button className="add-btn" onClick={addItem}>Add Item</button>
+                    </div>
+
+                    <div className="list">
+                        {items.length === 0 ? (
+                            <p style={{textAlign: "center", color: "#888"}}>List is empty. Add some items!</p>
+                        ) : (
+                            items.map((item, index) => (
+                                <div key={index} className="item">
+                                    <span>{item}</span>
+                                    <button className="delete-btn" onClick={() => removeItem(index)}>
+                                        Remove
+                                    </button>
+                                </div>
+                            ))
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<DynamicList />);
+    </script>
+</body>
+</html>

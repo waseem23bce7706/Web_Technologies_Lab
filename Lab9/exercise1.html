@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile - React</title>
+    <!-- React & ReactDOM (local files) -->
+    <script src="react.production.min.js"></script>
+    <script src="react-dom.production.min.js"></script>
+    <!-- Babel for JSX (local file) -->
+    <script src="babel.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .profile {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #1e40af;
+        }
+        .info {
+            margin-top: 20px;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+        p {
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function StudentProfile() {
+            // All student details stored in JavaScript variables (as required)
+            const name = "Shaik Waseem Akram";
+            const department = "Computer Science and Engineering";
+            const year = "3rd Year";
+            const section = "A";
+
+            // JSX + dynamic rendering with curly braces {}
+            return (
+                <div className="profile">
+                    <h1>Student Profile</h1>
+                    <div className="info">
+                        <h2>Name: {name}</h2>
+                        <p><strong>Department:</strong> {department}</p>
+                        <p><strong>Year:</strong> {year}</p>
+                        <p><strong>Section:</strong> {section}</p>
+                    </div>
+                </div>
+            );
+        }
+
+        // React root component hierarchy (exactly as the exercise asks)
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<StudentProfile />);
+    </script>
+</body>
+</html>

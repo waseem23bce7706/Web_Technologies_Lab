@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 3 - Counter</title>
+    <script src="react.production.min.js"></script>
+    <script src="react-dom.production.min.js"></script>
+    <script src="babel.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .counter {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+        h1 { color: #1e40af; }
+        .count {
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #334155;
+        }
+        button {
+            font-size: 1.2rem;
+            padding: 12px 24px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .increment { background: #22c55e; color: white; }
+        .decrement { background: #ef4444; color: white; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Counter() {
+            // useState Hook - stores the counter value
+            const [count, setCount] = React.useState(0);
+
+            // Increment function
+            const increment = () => {
+                setCount(count + 1);
+            };
+
+            // Decrement function
+            const decrement = () => {
+                setCount(count - 1);
+            };
+
+            return (
+                <div className="counter">
+                    <h1>Simple Counter</h1>
+                    <div className="count">{count}</div>
+                    <div>
+                        <button className="decrement" onClick={decrement}>
+                            - Decrement
+                        </button>
+                        <button className="increment" onClick={increment}>
+                            + Increment
+                        </button>
+                    </div>
+                    <p style={{marginTop: "20px", color: "#64748b"}}>
+                        Click the buttons to change the value
+                    </p>
+                </div>
+            );
+        }
+
+        // Render the component
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Counter />);
+    </script>
+</body>
+</html>

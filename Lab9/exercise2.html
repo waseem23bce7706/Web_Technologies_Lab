@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 2 - Student Cards</title>
+    <script src="react.production.min.js"></script>
+    <script src="react-dom.production.min.js"></script>
+    <script src="babel.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .student-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            padding: 25px;
+            width: 280px;
+            text-align: center;
+        }
+        .student-card h2 {
+            margin: 0 0 15px 0;
+            color: #1e40af;
+        }
+        .student-card p {
+            margin: 10px 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center; color:#1e40af;">Student Cards (Reusable Component)</h1>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Child Component - Reusable Student Card (Functional Component)
+        function StudentCard(props) {
+            return (
+                <div className="student-card">
+                    <h2>{props.name}</h2>
+                    <p><strong>Department:</strong> {props.department}</p>
+                    <p><strong>Marks:</strong> {props.marks}</p>
+                </div>
+            );
+        }
+
+        // Parent Component
+        function App() {
+            // Data for multiple students
+            const students = [
+                { name: "Shaik Waseem Akram", department: "Computer Science", marks: "92%" },
+                { name: "Priya Sharma", department: "Electronics", marks: "88%" },
+                { name: "Rahul Verma", department: "Mechanical", marks: "85%" },
+                { name: "Ananya Reddy", department: "Civil", marks: "90%" }
+            ];
+
+            return (
+                <div className="cards-container">
+                    {students.map((student, index) => (
+                        <StudentCard 
+                            key={index}
+                            name={student.name}
+                            department={student.department}
+                            marks={student.marks}
+                        />
+                    ))}
+                </div>
+            );
+        }
+
+        // Render the root (Parent → Child composition)
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
